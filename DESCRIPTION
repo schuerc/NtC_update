@@ -1,0 +1,37 @@
+Package: NtC
+Type: Package
+Title: Non-Toxic Concentrations (NtC) from Dose-Response Data
+Version: 0.1.0
+Date: 2026-09-29
+Authors@R: c(
+    person("Christoph", "Schür", email = "christoph.schuer@eawag.ch", role = c("aut", "cre")))
+Description: Determines the non-toxic concentration (NtC) of chemicals from cell-line
+    dose-response data according to Stadnicka-Michalak et al. (2018)
+    <doi:10.14573/altex.1701231>. Offers the original algorithm, reproduced including its
+    quirks, and an updated algorithm based on the 'bendr' package, with robust file import
+    and a 'shiny' app.
+License: GPL-3
+URL: https://github.com/schuerc/NtC_update
+BugReports: https://github.com/schuerc/NtC_update/issues
+Encoding: UTF-8
+Depends: R (>= 4.1)
+Imports:
+    base64enc,
+    bendr (>= 0.4.1),
+    ggplot2,
+    htmltools,
+    markdown,
+    nlmrt,
+    nls2,
+    shiny,
+    stats,
+    tools,
+    utils
+Suggests:
+    shinytest2,
+    testthat (>= 3.0.0)
+Remotes:
+    schuerc/bendr@v0.4.1
+Config/testthat/edition: 3
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0

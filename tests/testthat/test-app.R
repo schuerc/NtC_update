@@ -1,0 +1,21 @@
+# Smoke test of the Shiny app (needs the installed NtC package and Chrome).
+test_that("app starts, loads the demo data and shows an NtC", {
+  skip_on_cran()
+  skip_if_not_installed("shinytest2")
+  skip_if_not_installed("chromote")
+  skip_if(is.null(tryCatch(chromote::find_chrome(), error = function(e) NULL)), "Chrome not found")
+  app <- shinytest2::AppDriver$new(system.file("app", package = "NtC"), name = "smoke",
+                                   load_timeout = 60000, timeout = 30000)
+  on.exit(app$stop(), add = TRUE)
+  app$click("demo")
+  app$wait_for_idle(timeout = 30000)
+  html <- app$get_html("#results_ui")
+  expect_match(html, "NtC = ")
+  expect_match(app$get_html("#preview_ui"), "Data preview")
+  app$set_inputs(algorithm = "original")
+  app$wait_for_idle(timeout = 30000)
+  expect_match(app$get_text("#footer"), "original algorithm")
+  app$upload_file(file = system.file("extdata", "invalid_lost_decimal.csv", package = "NtC"))
+  app$wait_for_idle(timeout = 30000)
+  expect_match(app$get_text("#messages"), "decimal mark")
+})

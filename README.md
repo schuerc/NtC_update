@@ -51,6 +51,12 @@ First column: concentrations. Further columns: replicates, as survival in % of t
 (100 = no effect). Tab, semicolon, comma or whitespace separated; dot or comma as decimal mark.
 A row with concentration 0 is treated as the control. Details: Instructions tab / `inst/text/instructions.md`.
 
+## Background analysis
+
+`analysis/` compares the CI and NtC calculation of the original script and BendR
+([ci_comparison_original_vs_bendr.md](analysis/ci_comparison_original_vs_bendr.md)) and decomposes why
+they give different NtCs ([ntc_decomposition.md](analysis/ntc_decomposition.md)), on synthetic data.
+
 ## Development
 
 ```r

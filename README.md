@@ -59,6 +59,9 @@ they give different NtCs ([ntc_decomposition.md](analysis/ntc_decomposition.md))
 
 ## Development
 
+`renv.lock` records the package versions the app was tested with (including bendr from GitHub);
+`renv::restore()` recreates that library.
+
 ```r
 devtools::test()    # tests; test-app.R needs shinytest2 and Chrome
 ```
